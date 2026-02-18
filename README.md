@@ -119,7 +119,9 @@ AdSense and the video compressor have conflicting header requirements. This repo
 
 - `netlify.toml` — Active config (Marketing on main, Tool on app)
 - `netlify.marketing.toml` — Marketing config (no COEP)
-- `netlify.tool.toml` — Tool config (COEP/COOP)
+- `netlify.tool.toml` — Tool config (COEP/COOP, SITE_TYPE=app for root→app)
+
+The postbuild script copies `app.html` to `index.html` when `SITE_TYPE=app`, so the Tool site root serves the app (Netlify root redirects can be unreliable).
 
 ### Merging app → main
 

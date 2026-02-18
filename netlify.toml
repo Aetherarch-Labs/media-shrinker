@@ -4,6 +4,8 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  [build.environment]
+    SITE_TYPE = "app"
 
 # Redirect root to app (Tool deployment serves app only)
 [[redirects]]
