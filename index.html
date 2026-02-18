@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Shrinker - Compress Video Locally. Maximum Privacy.</title>
+    <!-- Use local Tailwind CSS instead of CDN to avoid COEP issues -->
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- AdSense Placeholder - Above the fold -->
+    <div class="w-full bg-gray-200 dark:bg-gray-800 py-4 flex items-center justify-center">
+      <div class="ad-placeholder text-gray-500 dark:text-gray-400 text-sm">AdSense Here</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-16 md:py-24">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+          Compress Video Locally.<br />
+          Maximum Privacy.
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
+          Shrink your video files without uploading to any server. Your data stays on your device.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="https://mediashrinkerapp.aetherarchlabs.xyz/"
+            onclick="localStorage.setItem('mediashrinker_access', JSON.stringify({value: true, timestamp: Date.now()})); return true;"
+            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center"
+          >
+            Launch App
+          </a>
+          <a 
+            href="https://mediashrinkerapp.aetherarchlabs.xyz/pro.html"
+            class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center"
+          >
+            ⚡ Try Pro (GPU)
+          </a>
+        </div>
+    <script>
+      // Set access flag when landing page loads (for return visitors)
+      // Store timestamp to check 24-hour expiration
+      localStorage.setItem('mediashrinker_landing_visited', JSON.stringify({value: true, timestamp: Date.now()}));
+    </script>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container mx-auto px-4 py-16">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          Why Choose Video Shrinker?
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="text-4xl mb-4">🔒</div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">No Server Uploads</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              All processing happens in your browser. Your videos never leave your device, ensuring complete privacy and security.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="text-4xl mb-4">📦</div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Large Files Supported</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Process videos up to 2GB. No upload limits - all processing happens in your browser. Very large files may require more memory.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="text-4xl mb-4">⚡</div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Fast WASM Engine</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Powered by WebAssembly for near-native performance. Get fast compression without installing any software.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
+      <!-- AdSense Placeholder - Footer -->
+      <div class="w-full bg-gray-200 dark:bg-gray-700 py-4 flex items-center justify-center">
+        <div class="ad-placeholder text-gray-500 dark:text-gray-400 text-sm">AdSense Here</div>
+      </div>
+      
+      <div class="container mx-auto px-4 py-8 text-center text-gray-600 dark:text-gray-400">
+        <p>&copy; 2025 Video Shrinker. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

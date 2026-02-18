@@ -1,0 +1,30 @@
+# Tool deployment (mediashrinkerapp.aetherarchlabs.xyz) - Video compressor with SharedArrayBuffer
+# Used by the "app" branch. Copy to netlify.toml on app branch.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Redirect root to app (Tool deployment serves app only)
+[[redirects]]
+  from = "/"
+  to = "/app.html"
+  status = 200
+  force = true
+
+# Critical isolation headers for SharedArrayBuffer (FFmpeg multi-threading)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# WASM caching - critical for performance (20MB+ binaries)
+[[headers]]
+  for = "/*.wasm"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/wasm"

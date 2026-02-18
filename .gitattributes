@@ -1,0 +1,2 @@
+# When merging app branch into main, keep main's netlify.toml (marketing config)
+netlify.toml merge=ours

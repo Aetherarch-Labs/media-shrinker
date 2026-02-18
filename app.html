@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Shrinker</title>
+    <script>
+      // Redirect protection: Ensure users visit landing page first
+      // Flags expire after 24 hours to ensure repeat ad views
+      (function() {
+        const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+        const now = Date.now();
+        
+        // Helper function to check if a flag is valid (exists and not expired)
+        function isValidFlag(flagKey) {
+          try {
+            const flagData = localStorage.getItem(flagKey);
+            if (!flagData) return false;
+            
+            // Handle both old format (just 'true') and new format (JSON with timestamp)
+            if (flagData === 'true') {
+              // Old format - migrate to new format
+              localStorage.setItem(flagKey, JSON.stringify({value: true, timestamp: now}));
+              return true;
+            }
+            
+            const parsed = JSON.parse(flagData);
+            if (!parsed.timestamp) return false;
+            
+            // Check if expired (more than 24 hours old)
+            const age = now - parsed.timestamp;
+            if (age > TWENTY_FOUR_HOURS) {
+              // Expired - remove flag
+              localStorage.removeItem(flagKey);
+              return false;
+            }
+            
+            return parsed.value === true;
+          } catch (e) {
+            // Invalid format - remove it
+            localStorage.removeItem(flagKey);
+            return false;
+          }
+        }
+        
+        // Check if user has access flag (set when clicking "Launch App")
+        const hasAccess = isValidFlag('mediashrinker_access');
+        
+        // Check if user came from landing page (referrer check)
+        const referrer = document.referrer;
+        const cameFromLanding = referrer && (
+          referrer.includes('mediashrinker.aetherarchlabs.xyz') && 
+          !referrer.includes('mediashrinkerapp.')
+        );
+        
+        // Check if user previously visited landing page (return visitor)
+        const visitedLanding = isValidFlag('mediashrinker_landing_visited');
+        
+        // Allow access if:
+        // 1. User clicked "Launch App" button (hasAccess) - valid within 24 hours
+        // 2. User came from landing page (cameFromLanding)
+        // 3. User previously visited landing page (visitedLanding) - valid within 24 hours
+        if (!hasAccess && !cameFromLanding && !visitedLanding) {
+          // Redirect to marketing landing page
+          window.location.href = 'https://mediashrinker.aetherarchlabs.xyz/';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
