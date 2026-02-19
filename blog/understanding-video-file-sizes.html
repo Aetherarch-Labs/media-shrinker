@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding Video File Sizes - Video Shrinker</title>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <a href="/" class="text-xl font-bold text-gray-900 dark:text-white">Video Shrinker</a>
+          <div class="flex gap-6">
+            <a href="/blog/" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Blog</a>
+            <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
+            <a href="/contact.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
+            <a href="/privacy.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-16 max-w-3xl">
+      <a href="/blog/" class="text-blue-600 dark:text-blue-400 hover:underline mb-6 inline-block">← Back to Blog</a>
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">Understanding Video File Sizes</h1>
+      
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Why is a 1-minute video 50 MB on your phone but only 5 MB after compression? File size is determined by resolution, bitrate, and duration. Understanding how these interact helps you choose the right target when compressing.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">The Formula: Bitrate × Duration</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        File size (in bits) = bitrate × duration. So a 5 Mbps video at 60 seconds = 300 megabits = 37.5 MB. Lower the bitrate to 1 Mbps and you get 7.5 MB. That's the core of compression: reduce bitrate for a smaller file, at the cost of quality.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Resolution's Impact</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        More pixels = more data. 4K has four times the pixels of 1080p, so it needs roughly four times the bitrate for the same quality. Downscaling to 720p or 480p dramatically reduces the data needed. For many sharing use cases, 720p is plenty—and it halves or quarters the file size compared to 1080p.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Estimating for Your Target</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        If you need a 25 MB file for a 2-minute video, that's 25 MB ÷ 120 seconds ≈ 1.7 Mbps total (video + audio). Video Shrinker does this math for you—enter your target size and duration, and it calculates the optimal bitrate. The tool shows a quality estimate so you can preview before compressing.
+      </p>
+    </main>
+
+    <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
+      <div class="container mx-auto px-4 py-8 text-center text-gray-600 dark:text-gray-400">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+          <a href="/blog/" class="hover:underline">Blog</a>
+          <a href="/about.html" class="hover:underline">About</a>
+          <a href="/contact.html" class="hover:underline">Contact</a>
+          <a href="/privacy.html" class="hover:underline">Privacy Policy</a>
+        </div>
+        <p>&copy; 2025 Video Shrinker. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

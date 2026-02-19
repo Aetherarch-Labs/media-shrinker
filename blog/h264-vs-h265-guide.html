@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H.264 vs. H.265: A Practical Guide - Video Shrinker</title>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <a href="/" class="text-xl font-bold text-gray-900 dark:text-white">Video Shrinker</a>
+          <div class="flex gap-6">
+            <a href="/blog/" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Blog</a>
+            <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
+            <a href="/contact.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
+            <a href="/privacy.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-16 max-w-3xl">
+      <a href="/blog/" class="text-blue-600 dark:text-blue-400 hover:underline mb-6 inline-block">← Back to Blog</a>
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">H.264 vs. H.265: A Practical Guide</h1>
+      
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        H.264 (AVC) and H.265 (HEVC) are the two dominant video codecs. H.265 is newer and more efficient, but H.264 remains the default for compatibility. Here's when to use each and why Video Shrinker chooses H.264.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">H.265: Better Compression, Less Support</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        H.265 can achieve the same quality as H.264 at roughly half the bitrate. That means smaller files or better quality at the same size. The catch: H.265 support is inconsistent. Safari supports it natively. Chrome and Firefox have added support in recent years, but it's not universal. Many older devices and smart TVs don't support it. If you encode in H.265, some recipients might not be able to play the file.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">H.264: Universal Compatibility</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        H.264 has been around since 2003 and is supported everywhere. Every phone, tablet, computer, browser, and streaming platform can play it. When you're sharing a compressed video—via email, Discord, WhatsApp, or any other channel—you want it to work for everyone. H.264 guarantees that.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Our Choice</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Video Shrinker outputs H.264 in MP4 because we prioritize compatibility. The extra file size compared to H.265 is a worthwhile trade-off for a tool that's meant for sharing. When H.265 support becomes universal, we'll reassess. For now, H.264 is the safe choice.
+      </p>
+    </main>
+
+    <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
+      <div class="container mx-auto px-4 py-8 text-center text-gray-600 dark:text-gray-400">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+          <a href="/blog/" class="hover:underline">Blog</a>
+          <a href="/about.html" class="hover:underline">About</a>
+          <a href="/contact.html" class="hover:underline">Contact</a>
+          <a href="/privacy.html" class="hover:underline">Privacy Policy</a>
+        </div>
+        <p>&copy; 2025 Video Shrinker. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

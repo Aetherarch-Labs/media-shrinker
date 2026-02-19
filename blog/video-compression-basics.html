@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Compression Basics - Video Shrinker</title>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <a href="/" class="text-xl font-bold text-gray-900 dark:text-white">Video Shrinker</a>
+          <div class="flex gap-6">
+            <a href="/blog/" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Blog</a>
+            <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
+            <a href="/contact.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
+            <a href="/privacy.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-16 max-w-3xl">
+      <a href="/blog/" class="text-blue-600 dark:text-blue-400 hover:underline mb-6 inline-block">← Back to Blog</a>
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">Video Compression Basics: What You Need to Know</h1>
+      
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Video files are everywhere—and they're big. Understanding how compression works helps you make better choices when shrinking your videos. Here's a beginner-friendly guide to bitrate, codecs, and the trade-off between quality and file size.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">What Is Bitrate?</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Bitrate is the amount of data used per second of video. Measured in bits per second (bps) or kilobits per second (kbps), it directly determines file size. Higher bitrate = more data = better quality but larger files. A 1080p video at 5 Mbps might look great; at 500 kbps it will look blocky. The goal of compression is to find the lowest bitrate that still looks acceptable for your use case.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Codecs: The Compression Engines</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        A codec (coder/decoder) is the algorithm that compresses and decompresses video. H.264 is the most widely used—it's in every phone, camera, and streaming platform. H.265 (HEVC) compresses better but has less support. VP9 is used by YouTube and WebM. When you compress, you're re-encoding with a codec—throwing away some data to shrink the file.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Quality vs. File Size</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        There's always a trade-off. For a fixed duration, smaller file = lower bitrate = lower quality. The trick is to compress until the quality is "good enough" for how the video will be viewed. A clip for Discord chat doesn't need 4K. A video for a presentation might need 1080p. Match the target to the context.
+      </p>
+    </main>
+
+    <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
+      <div class="container mx-auto px-4 py-8 text-center text-gray-600 dark:text-gray-400">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+          <a href="/blog/" class="hover:underline">Blog</a>
+          <a href="/about.html" class="hover:underline">About</a>
+          <a href="/contact.html" class="hover:underline">Contact</a>
+          <a href="/privacy.html" class="hover:underline">Privacy Policy</a>
+        </div>
+        <p>&copy; 2025 Video Shrinker. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -11,6 +11,21 @@
          crossorigin="anonymous"></script>
   </head>
   <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <a href="/" class="text-xl font-bold text-gray-900 dark:text-white">Video Shrinker</a>
+          <div class="flex gap-6">
+            <a href="/blog/" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Blog</a>
+            <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
+            <a href="/contact.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
+            <a href="/privacy.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <!-- Hero Section - Content first (AdSense requires substantial publisher content above ads) -->
     <section class="container mx-auto px-4 py-16 md:py-24">
       <div class="max-w-4xl mx-auto text-center">
@@ -92,6 +107,57 @@
       </div>
     </section>
 
+    <!-- Below-the-fold content: 800-1200 words for AdSense content shell -->
+    <article class="container mx-auto px-4 py-16 max-w-4xl">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">How Does Video Compression Work?</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Video compression is the process of reducing the file size of a video without significantly degrading its visual quality. When you record a video, each frame contains millions of pixels, and storing every pixel for every frame would create enormous files. A 1080p video at 30 frames per second would require roughly 1.5 gigabits per second of storage if stored uncompressed—that's over 11 GB for a single minute of video.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Compression algorithms solve this by finding patterns and redundancies in the video data. They exploit the fact that consecutive frames are often very similar (a person talking doesn't change the background), and that the human eye is less sensitive to certain types of visual information. By discarding or approximating this redundant or less noticeable data, compressors can shrink file sizes by 90% or more while keeping the video looking good.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Understanding Lossless vs. Lossy Compression</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        <strong>Lossless compression</strong> reduces file size without losing any data. When you decompress a losslessly compressed video, you get back the exact same pixels as the original. Formats like FFV1 and HuffYUV offer lossless compression, but the size reduction is modest—typically 2:1 to 3:1. Lossless is ideal for archival and professional editing where every pixel matters.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        <strong>Lossy compression</strong> achieves much smaller files by permanently discarding some information. The most popular video codecs—H.264, H.265 (HEVC), and VP9—are all lossy. They use sophisticated algorithms to remove data the human eye is unlikely to notice. At high bitrates, lossy compression can be visually indistinguishable from the original. At low bitrates, you'll see artifacts like blockiness or blurriness. The key is finding the right balance for your use case.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Why H.265 (HEVC) Is Better Than H.264—When It Matters</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        H.264, also known as AVC, has been the dominant video codec for over 15 years. It's universally supported and delivers good quality at reasonable file sizes. H.265, or HEVC (High Efficiency Video Coding), is its successor and can achieve the same visual quality at roughly half the bitrate. That means a 50 MB H.264 video could be 25 MB in H.265 with similar quality.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        So why does Video Shrinker use H.264? Compatibility. H.265 support in browsers and devices is still inconsistent. Safari supports it, but Chrome and Firefox have been slower to adopt it for general playback. H.264 works everywhere—on every phone, tablet, smart TV, and browser. For a web-based tool, H.264 ensures your compressed video will play for anyone who downloads it.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">A Guide to Common File Size Limits</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Many platforms impose strict limits on video file sizes. Discord free users are capped at 8 MB for uploads. Gmail allows 25 MB attachments. WhatsApp compresses videos aggressively. Instagram and TikTok have their own constraints. Knowing these limits helps you choose the right target size when compressing.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Video Shrinker lets you set a target size (8 MB, 25 MB, 50 MB, or custom) so you can compress your video to fit exactly within these limits. The tool calculates the optimal bitrate based on your video's duration, ensuring you get the best possible quality for the size you need.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Is Online Video Compression Safe? Why Client-Side Matters</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Traditional online video compressors upload your file to their servers, process it there, and send back the result. Your private videos—recordings of meetings, family moments, sensitive content—pass through third-party infrastructure. Even with HTTPS, the files exist on someone else's servers, even if briefly.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Client-side compression runs entirely in your browser using WebAssembly. Your video never leaves your device. The processing happens locally, and the compressed file is created on your machine. No upload, no server storage, no data retention. For privacy-conscious users, this is the only acceptable approach. Video Shrinker is designed from the ground up to be a privacy-first tool—your files stay yours.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">WebM vs. MP4: Which Is Better for File Size?</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        MP4 (H.264) and WebM (VP9) are both popular formats. WebM often achieves better compression at the same quality level, but MP4 has far broader compatibility. Most video players, phones, and social platforms expect MP4. Video Shrinker outputs MP4 to ensure maximum compatibility across devices and platforms.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        If you're distributing exclusively on the web (e.g., YouTube, Vimeo), WebM can be a good choice. For general-purpose sharing—email, Discord, messaging apps—MP4 is the safer bet. Our tool prioritizes compatibility so your compressed videos work everywhere.
+      </p>
+    </article>
+
     <!-- Footer -->
     <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
       <!-- AdSense - Footer (replace YOUR_AD_SLOT_ID with your ad unit ID from AdSense) -->
@@ -106,6 +172,12 @@
       </div>
       
       <div class="container mx-auto px-4 py-8 text-center text-gray-600 dark:text-gray-400">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+          <a href="/blog/" class="hover:underline">Blog</a>
+          <a href="/about.html" class="hover:underline">About</a>
+          <a href="/contact.html" class="hover:underline">Contact</a>
+          <a href="/privacy.html" class="hover:underline">Privacy Policy</a>
+        </div>
         <p>&copy; 2025 Video Shrinker. All rights reserved.</p>
       </div>
     </footer>

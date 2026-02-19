@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Is Online Video Compression Safe? Why Client-Side Matters - Video Shrinker</title>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <a href="/" class="text-xl font-bold text-gray-900 dark:text-white">Video Shrinker</a>
+          <div class="flex gap-6">
+            <a href="/blog/" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Blog</a>
+            <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
+            <a href="/contact.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
+            <a href="/privacy.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-16 max-w-3xl">
+      <a href="/blog/" class="text-blue-600 dark:text-blue-400 hover:underline mb-6 inline-block">← Back to Blog</a>
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">Is Online Video Compression Safe? (Why Client-Side Matters)</h1>
+      
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Video compression is useful—but when you use an online tool, you're uploading your files to someone else's servers. That raises a question: is it safe? The answer depends on whether the tool uses server-side or client-side processing. Here's how they differ and why it matters for your privacy.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Server-Side Compression: Your Files Leave Your Device</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Most traditional online compressors work like this: you upload your video, their server processes it, and they send back the compressed file. Your video exists on their infrastructure—even if only temporarily. They may have policies about deletion, but you're trusting them with your data. For sensitive content—work meetings, personal recordings, confidential material—that's a risk. A breach, a subpoena, or a simple misconfiguration could expose your files.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">Client-Side Compression: Processing in Your Browser</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Client-side compression runs entirely in your browser using WebAssembly. Your video never leaves your device. The tool loads the file into memory, processes it locally, and creates the output—all without a single byte being uploaded. We can't see your files because we never receive them. This is the model Video Shrinker uses. It's the only way to guarantee that your private videos stay private.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">How to Tell the Difference</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        If a compressor starts with a long upload progress bar, it's server-side. If it processes immediately after you select a file (with no upload step), it's likely client-side. Check the privacy policy: if it says "we process your files on our servers," that's server-side. If it says "processing happens entirely in your browser" or "we never receive your files," that's client-side.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-10 mb-4">When Client-Side Is Essential</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        For work videos, personal recordings, or anything you wouldn't want on a random server, client-side is the only safe option. Video Shrinker is built for users who care about privacy. We don't need accounts, we don't store files, and we couldn't access them even if we wanted to. Your files stay yours.
+      </p>
+    </main>
+
+    <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
+      <div class="container mx-auto px-4 py-8 text-center text-gray-600 dark:text-gray-400">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+          <a href="/blog/" class="hover:underline">Blog</a>
+          <a href="/about.html" class="hover:underline">About</a>
+          <a href="/contact.html" class="hover:underline">Contact</a>
+          <a href="/privacy.html" class="hover:underline">Privacy Policy</a>
+        </div>
+        <p>&copy; 2025 Video Shrinker. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
