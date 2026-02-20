@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Download, Loader2, AlertCircle, CheckCircle2, Zap, CreditCard } from 'lucide-react';
 import { useTranscoderPro, isWebCodecsAvailable } from './hooks/useTranscoderPro';
 import { FileDropzone } from './components/FileDropzone';
@@ -34,6 +34,7 @@ function AppPro() {
   const [optimizeAudio, setOptimizeAudio] = useState(false);
   const [outputResolution, setOutputResolution] = useState<'original' | '1080p' | '720p' | '480p'>('original');
   const [credits, setCredits] = useState(DEMO_CREDITS);
+  const outputBlobURLRef = useRef<string | null>(null);
 
   const {
     isLoaded,
@@ -57,6 +58,15 @@ function AppPro() {
     });
   }, [load]);
 
+  // Keep ref in sync and revoke blob URL on unmount to prevent memory leaks
+  useEffect(() => {
+    outputBlobURLRef.current = outputBlobURL;
+    return () => {
+      const url = outputBlobURLRef.current;
+      if (url) URL.revokeObjectURL(url);
+    };
+  }, [outputBlobURL]);
+
   useEffect(() => {
     if (videoDuration) {
       const quality = estimateQuality(
@@ -74,7 +84,10 @@ function AppPro() {
 
   const handleFileSelect = async (file: File) => {
     setSelectedFile(file);
-    setOutputBlobURL(null);
+    setOutputBlobURL((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return null;
+    });
     setVideoDuration(null);
     setVideoResolution(null);
     setSizeValidation(null);
@@ -162,6 +175,12 @@ function AppPro() {
       if (!validation.valid) return;
     }
 
+    // Revoke previous output URL before creating new one (prevents stale download)
+    setOutputBlobURL((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return null;
+    });
+
     const blobURL = await transcode(
       selectedFile,
       targetSizeMB,
@@ -205,8 +224,11 @@ function AppPro() {
   };
 
   const handleReset = () => {
+    setOutputBlobURL((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return null;
+    });
     setSelectedFile(null);
-    setOutputBlobURL(null);
     setTargetSizeMB(8);
     setRemoveAudio(false);
     setOptimizeAudio(false);
