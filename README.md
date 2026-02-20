@@ -107,7 +107,7 @@ AdSense and the video compressor have conflicting header requirements. This repo
    git push -u origin app
    ```
 
-3. **Create two Netlify sites** (both from `Aetherarch-Labs/video-shrinker`):
+3. **Create two Netlify sites** (both from `Aetherarch-Labs/media-shrinker`):
    - **Marketing**: Branch = `main`, Domain = mediashrinker.aetherarchlabs.xyz
    - **Tool**: Branch = `app`, Domain = mediashrinkerapp.aetherarchlabs.xyz
 
@@ -142,7 +142,7 @@ git init
 git add .
 git commit -m "Initial commit: dual-deploy setup"
 git branch -M main
-git remote add origin git@github.com:Aetherarch-Labs/video-shrinker.git
+git remote add origin git@github.com:Aetherarch-Labs/media-shrinker.git
 git push -u origin main
 ```
 

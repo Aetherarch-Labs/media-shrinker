@@ -321,6 +321,9 @@ async function transcodeWithMediaBunny(
     const srcHeight = inputHeight ?? trackHeight;
     const { getTargetDimensions } = await import('../lib/resolution');
     const dimensions = getTargetDimensions(outputResolution, srcWidth, srcHeight);
+    // Always pass explicit dimensions: for 'original' use track size to avoid transmux/pass-through
+    const outWidth = dimensions?.width ?? trackWidth;
+    const outHeight = dimensions?.height ?? trackHeight;
     const audioBitrateBps = removeAudio ? 0 : optimizeAudio ? 96000 : 128000;
     const videoBitrateBps = calculateVideoBitrate(targetSizeMB, duration, audioBitrateBps);
 
@@ -333,14 +336,14 @@ async function transcodeWithMediaBunny(
       input,
       output,
       video: () => ({
-        ...(dimensions && {
-          width: dimensions.width,
-          height: dimensions.height,
-          fit: 'contain' as const,
-        }),
+        width: outWidth,
+        height: outHeight,
+        fit: 'contain' as const,
         bitrate: videoBitrateBps,
         codec: 'avc' as const,
         hardwareAcceleration: 'prefer-hardware' as const,
+        // Force re-encode; prevents transmux/pass-through that can return original file
+        forceTranscode: true,
         // Fewer keyframes = faster encoding (trade-off: slightly worse seeking)
         keyFrameInterval: 10,
       }),
@@ -366,6 +369,21 @@ async function transcodeWithMediaBunny(
     const buffer = (output.target as BufferTarget).buffer;
     if (!buffer || buffer.byteLength === 0) {
       throw new Error('Output file is empty');
+    }
+
+    // Sanity check: if output is nearly identical to input size, likely pass-through (shouldn't happen with forceTranscode)
+    const outputSizeMB = buffer.byteLength / 1024 / 1024;
+    const inputSizeMB = file.size / 1024 / 1024;
+    if (outputSizeMB >= inputSizeMB * 0.98) {
+      console.warn(
+        `[MediaBunny] Output (${outputSizeMB.toFixed(2)}MB) nearly matches input (${inputSizeMB.toFixed(2)}MB). ` +
+          'Compression may not have applied. Falling back to FFmpeg.'
+      );
+      return {
+        result: null,
+        fallbackReason:
+          'WebCodecs output matched input size—compression may not have applied. Using FFmpeg for reliable compression.',
+      };
     }
 
     setProgress(1);
